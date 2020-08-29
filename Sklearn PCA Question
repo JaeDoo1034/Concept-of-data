@@ -1,0 +1,3 @@
+* scikit-learn PCA: matrix transformation produces PC estimates with flipped signs
+(부호가 반대로 나온다. 어찌된 일?!?!)
+- 출저 : https://stackoverrun.com/ko/q/5768003
