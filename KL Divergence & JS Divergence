@@ -1,2 +1,5 @@
 * Kullback-Leibler Divergence & Jensen-Shannon Divergence
+우리가 데이터의 분포를 추정했을 때 얼마나 잘 추정한 것인지 측정하는 방법은 없을까요? 
+오늘 소개해 드릴 Kullback-Leibler Divergence 와 Jensen-Shannon Divergence는 서로 다른 확률 분포의 차이를 즉정하는 척도입니다. 
+우리가 추정한 확률 분포와 실제 확률 분포 사이의 차이가 작다면 좋은 추정이라고 할 수 있습니다.
  - 출저 : https://hyeongminlee.github.io/post/prob002_kld_jsd/
