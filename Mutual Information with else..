@@ -1,0 +1,15 @@
+위키피디아 Mutual information
+https://en.wikipedia.org/wiki/Mutual_information
+
+Pointwise mutual information
+- Pointwise mutual information (PMI),[1] or point mutual information, is a measure of association used in information theory and statistics. 
+In contrast to mutual information (MI) which builds upon PMI, it refers to single events, whereas MI refers to the average of all possible events.
+- https://en.wikipedia.org/wiki/Pointwise_mutual_information
+
+
+엔트로피
+https://en.wikipedia.org/wiki/Entropy_(information_theory)
+
+Kullback-Leibler divergence
+- In mathematical statistics, the Kullback–Leibler divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution.
+https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
