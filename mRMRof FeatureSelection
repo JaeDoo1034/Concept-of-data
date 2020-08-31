@@ -1,0 +1,5 @@
+[머신러닝] Minimum-redundancy-maximum-relevance (mRMR)
+mRMR은 filter method의 한 방법으로써, 두 가지 요소를 고려합니다. 바로, Y를 잘 예측하는 변수이면서, X들과도 중복성이 적은 변수들을 선택합니다. 
+이 때, Y와의 상관성과 X들과의 중복성은 일반적으로 피어슨 상관계수와 Mutual information으로 측정할 수 있습니다.
+
+https://analysisbugs.tistory.com/113?category=840322
