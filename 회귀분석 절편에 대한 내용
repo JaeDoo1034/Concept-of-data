@@ -1,0 +1,10 @@
+회귀분석에서 절편(intercept)과 beta의 의미
+- https://m.blog.naver.com/PostView.nhn?blogId=leerider&logNo=220193498742&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+
+절편(intercept)은 error의 평균을 capture하는 데 절편을 추정하면 error의 평균이 0일 것으로 기대할 수 있습니다. 
+따라서, 모형추정을 할 때는 설명변수가 0일 때 종속변수, y가 0이라는 명확한 근거가 있는 것이 아니면 기본적으로 절편도 추정해야 합니다.
+
+
+절편은 경우에 따라 어떤 의미가 없을수도 있고 또는 경우에 따라 어떤 의미가 있을 수도 있는 데 
+이는 fitting하는 regression모형에서 종속변수와 설명변수의 의미를 생각해서 합리적추론(reasoning)에 의해 판단해야 합니다.
