@@ -1,0 +1,9 @@
+# Numpy의 polyfit과 poly1d의 사용법 - 최소제곱법과 polynomial class
+==> 추세선 표시에 이용 가능!
+-https://pinkwink.kr/1127
+
+# 베이지안 휘귀 분석
+- https://datascienceschool.net/view-notebook/840c925556d84f618f96ba394313a45d/
+
+# Numpy polyfit 문서
+- https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html
