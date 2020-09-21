@@ -1,0 +1,6 @@
+● 관심 데이터에 집중시켜봅시다.
+○ matplotlib을 이용해서 특정 데이터 색상만 변경합니다.
+○ 모든 객체를 patch로 관리하는 matplotlib
+○ 생각보다 친절합니다. 코드 보면 아시겠지만 참 쉬워요. :)
+
+https://jehyunlee.github.io/2020/08/26/Python-DS-27-mpl_focus/
