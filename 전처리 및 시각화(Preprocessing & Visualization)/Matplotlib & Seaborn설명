@@ -1,0 +1,17 @@
+● seaborn의 구조에 대해 잘 설명된 글을 요약하여 공유드립니다.
+○ seaborn의 구조를 파악하지 못하고 손대면 헬게이트가 열립니다.
+○ 제가 최근 블로그에 쓴 글과 같은 논지입니다.
+
+- 원제 : "Matplotlib+ Seaborn + Pandas: An Ideal Amalgamation for Statistical Data Visualisation"
+- 읽어야 할 사람 : matplotlib, pandas를 알고 seaborn을 쓰려고 하는 분. 
+
+1. Matplotlib
+- seaborn을 잘 쓰려면 matplotlib 구조를 이해해야 한다.
+- Figure, Axes, Axis의 차이를 숙지해야 한다.
+
+2. Seaborn
+- seaborn의 명령어는 figure-level과 axes-level로 나뉜다.
+- 어떤 명령어가 어떤 수준인지 반드시 이해하고 사용해야 한다.
+- 명령어의 수준에 따라 사용 방법이 다르기 때문이다.
+
+https://towardsdatascience.com/matplotlib-seaborn-pandas-an-ideal-amalgamation-for-statistical-data-visualisation-f619c8e8baa3
