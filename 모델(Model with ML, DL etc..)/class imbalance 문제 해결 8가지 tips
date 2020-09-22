@@ -1,0 +1,29 @@
+1) 8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset
+https://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/
+
+2) Imbalanced Classification With Python (7-Day Mini-Course)
+Lesson 01: Challenge of Imbalanced Classification
+Lesson 02: Intuition for Imbalanced Data
+Lesson 03: Evaluate Imbalanced Classification Models
+Lesson 04: Undersampling the Majority Class
+Lesson 05: Oversampling the Minority Class
+Lesson 06: Combine Data Undersampling and Oversampling
+Lesson 07: Cost-Sensitive Algorithms
+
+- https://machinelearningmastery.com/imbalanced-classification-with-python-7-day-mini-course/
+
+3) A Gentle Introduction to Threshold-Moving for Imbalanced Classification
+* After completing this tutorial, you will know:
+
+- The default threshold for interpreting probabilities to class labels is 0.5, and tuning this hyperparameter is called threshold moving.
+- How to calculate the optimal threshold for the ROC Curve and Precision-Recall Curve directly.
+- How to manually search threshold values for a chosen model and model evaluation metric.
+
+- https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/
+
+
+4) SMOTE for Imbalanced Classification with Python
+
+https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/
+
+
