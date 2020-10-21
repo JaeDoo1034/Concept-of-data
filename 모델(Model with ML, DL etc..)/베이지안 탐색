@@ -1,0 +1,32 @@
+BayesianOptimization 라이브러리
+
+https://research.sualab.com/introduction/practice/2019/04/01/bayesian-optimization-overview-2.html
+
+
+# 객체 생성
+bayes_optimizer = BayesianOptimization(target, {'x': (-2, 6)}, random_state=0)
+
+ 첫 번째 인자(target)는 최적해를 탐색하고자 하는 목적 함수 f(x)
+ 두 번째 인자({'x': (-2, 6)})는 입력값 x의 탐색 대상 구간 (a,b)를 dictionary 형태로 받습니다
+ random_state 인자는 Bayesian Optimization 상의 랜덤성이 존재하는 부분(e.g. 다음 입력값 후보 추출 등)을 통제할 수 있도록 random seed를 입력해 주기 위한 목적
+ 
+
+
+# 실행 파트
+bayes_optimizer.maximize(init_points=2, n_iter=14, acq='ei', xi=0.01)
+1) init_points 인자는, 맨 처음에 일부 Random Search 방법으로 조사할 입력값-함숫값 점들의 갯수(n)을 나타냅니다.
+   init_points 개의 입력값들을 랜덤하게 샘플링한 뒤, 앞서 정의한 target 함수에 대입하여 이들에 대한 함숫값들을 각각 계산하여 저장합니다. 
+   이 때, init_points를 큰 값으로 설정할수록, 전체 구간에 대한 충분한 사전 탐색을 수행해 놓을 수 있으나, 그만큼 시간이 많이 소요됩니다.
+   
+ 2)  n_iter 인자는, 처음 n개의 입력값-함숫값 점들을 조사한 후, 조사된 입력값-함숫값 점들의 총 갯수가 N개에 도달할 때까지, Bayesian Optimization 방법을 통해 추가로 조사할 입력값-함숫값 점들의 총 갯수(N−n)를 나타냅니다.
+ 
+     예를 들어, 
+     총 16개의 입력값-함숫값 점들을 확보하여 최적값을 탐색하고자 할 시, init_points=2로 설정하여 처음 2개의 입력값-함숫값 점들을 조사하고자 한다면,
+     n_iter=14로 설정하면 나머지 14개의 입력값-함숫값 점들은 Bayesian Optimization 방법으로 조사하게 됩니다.
+     
+     
+  3) acq 인자는, 현재 bayesian-optimization 라이브러리에서 제공하는 Acquisition Function들 중 어느 것을 사용할지를 명시하는 부분
+  
+    만일 Expected Improvement(EI)를 Acquisition Function으로 사용하고자 한다면, acq='ei'로 설정하면 됩니다. 
+    이에 결부되어 나오는 마지막 인자가 xi인데 exploration-explotation 간의 상대적 강도를 조절해 주는 파라미터 ξ입니다. 
+    bayesian-optimization에서 xi의 기본값은 0.0이나, 그보다는 exploration의 강도를 좀 더 높이기 위해 0.01 정도로 설정해 주는 것이 무난
