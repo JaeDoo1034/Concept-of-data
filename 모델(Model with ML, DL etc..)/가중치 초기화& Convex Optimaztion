@@ -1,0 +1,24 @@
+*Lecun 초기화, Xavier Initialization, He Initialization
+https://reniew.github.io/13/
+
+"
+Sigmoid, tanh 경우 Xavier 초기화 방법이 효율적이다.
+ReLU계의 활성화 함수 사용 시 He 초기화 방법이 효율적이다.
+최근의 대부분의 모델에서는 He초기화를 주로 선택한다.
+"
+"
+마지막으로, 대부분의 초기화 방법이 Normal Distribution과 Uniform Distribution을 따르는 두가지 방법이 있는데 
+이에대한 선택 기준에 대해서는 명확한 것이 없다. 
+
+하지만 He의 논문의 말을 인용하면,
+
+최근의 Deep CNN 모델들은 주로 Gaussian Distribution을 따르는 가중치 초기화 방법을 사용한다.
+
+따라서 Deep CNN의 경우 보통의 Gaussian 초기화 방법을 사용해 볼 수 있다.
+하지만 여러 초기화 방법들을 테스트하며 사용하는 것이 가장 좋은 방법일 것이다.
+
+"
+
+
+Machine Learning 스터디 (7) Convex Optimization
+http://sanghyukchun.github.io/63/
