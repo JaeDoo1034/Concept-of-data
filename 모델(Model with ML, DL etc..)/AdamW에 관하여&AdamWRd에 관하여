@@ -1,0 +1,29 @@
+
+[논문 리뷰]AdamW에 대해 알아보자! Decoupled weight decay regularization 논문 리뷰(1)
+https://hiddenbeginner.github.io/deeplearning/paperreview/2019/12/29/paper_review_AdamW.html
+
+"
+Adam은 “optimizer는 묻지도 따지지도 말고 Adam을 사용해라” 라는 격언이 있을 정도로 만능 optimizer처럼 느껴진다. 
+하지만 만능인 것 치고는 일부 task, 특히 컴퓨터 비젼 task에서는 momentum을 포함한 SGD에 비해 일반화(generalization)가 많이 뒤쳐진다는 결과들이 있었다. 
+AdamW를 소개한 논문 “Decoupled weight decay regularization”에서는 L2 regularization과 weight decay 관점에서 Adam이 SGD이 비해 일반화 능력이 떨어지는 이유를 설명하고 있다.
+"
+
+"
+L2 Regularization = Weight decay?
+많은 책과 자료에서 L2 regularization 과 weight decay는 서로 같은 것이라고 말한다. 
+그럼 과연 L2 regularization과 weight decay는 정말 같은 것일까? 정답은 일부는 맞고 일부는 틀리다. 
+SGD에 대해서는 맞지만 Adam에 대해서는 틀리다. 
+Adam을 포함한 adaptive learning rate를 사용하는 optimizer들은 SGD와 다른 weight 업데이트 식을 사용하기 때문이다. 
+L2 regularization이 포함된 손실함수를 Adam을 사용하여 최적화할 경우 일반화 효과를 덜 보게 된다.
+"
+
+
+AdamWR에 대해 알아보자! Decoupled weight decay regularization 논문 리뷰(2)
+https://hiddenbeginner.github.io/deeplearning/paperreview/2020/01/04/paper_review_AdamWR.html
+
+"
+* Learning rate schedule 과 Learning rate annealing
+Learning rate schedule란 단어 그대로 훈련 동안에 고정된 learning rate를 사용하는 것이 아니고 미리 정한 스케줄대로 learning rate를 바꿔가며 사용하는 것이다. 
+그리고 learning rate annealing은 learning rate schedule과 혼용되어 사용되지만 
+    특히, learning rate가 iteration에 따라 monotonically decreasing하는 경우를 의미하는 것 같다.
+"
