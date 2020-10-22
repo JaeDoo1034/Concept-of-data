@@ -1,0 +1,119 @@
+* 학습률(learning rate): ReduceLROnPlateau
+https://teddylee777.github.io/tensorflow/keras-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98-vol-01
+
+
+ReduceLROnPlateau는 학습률이 개선되지 않을 때, 학습률을 동적으로 조정하여 학습률을 개선하는 효과를 기대할 수 있습니다.
+경사하강법에 의하여 학습을 하는 경우 Local Minima에 빠져버리게 되면, 더이상 학습률이 개선되지 않고 정체되거나, 심하게 튀는 현상을 경험하신 분들이 많으실껍니다.
+Local Minima에 빠져버린 경우, 쉽게 빠져나오지 못하고 갇혀버리게 되는데, 이때 learning rate를 늘리거나 줄여주는 방법으로 빠져나오는 효과를 기대할 수 있습니다.
+Keras에는 콜백함수로 제공하고 있으며, ReduceLROnPlateau이 바로 그 역할을 합니다.
+
+* hyperparameter
+1) monitor
+ - quantity to be monitored.
+
+2) factor
+ - factor by which the learning rate will be reduced. new_lr = lr * factor.
+
+3) patience
+ - number of epochs with no improvement after which learning rate will be reduced.
+
+4) verbose
+ - int. 0: quiet, 1: update messages.
+
+5) mode
+ - one of {'auto', 'min', 'max'}. 
+   In 'min' mode, the learning rate will be reduced when the quantity monitored has stopped decreasing; 
+   in 'max' mode it will be reduced when the quantity monitored has stopped increasing; 
+   in 'auto' mode, the direction is automatically inferred from the name of the monitored quantity.
+
+6) min_delta
+ - threshold for measuring the new optimum, to only focus on significant changes.
+
+7) cooldown
+ - number of epochs to wait before resuming normal operation after lr has been reduced.
+
+8) min_lr
+ - lower bound on the learning rate.
+ 
+ 
+ 
+ 
+ * ModelCheckPoint : weight 중간 저장
+ https://teddylee777.github.io/tensorflow/keras-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98-vol-02
+ 
+ ModelCheckpoint는 모델이 학습하면서 정의한 조건을 만족했을 때 Model의 weight 값을 중간 저장해 줍니다. 
+ 학습시간이 꽤 오래걸린다면, 모델이 개선된 validation score를 도출해낼 때마다 weight를 중간 저장함으로써, 혹시 중간에 memory overflow나 crash가 나더라도 다시 weight를 불러와서 학습을 이어나갈 수 있기 때문에, 시간을 save해 줄 수 있습니다.
+ 
+ * hyperparameter(공식홈페이지 : https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint)
+1) filepath
+ - string or PathLike, path to save the model file. filepath can contain named formatting options, which will be filled the value of epoch and keys in logs (passed in on_epoch_end). For example: if filepath is weights.{epoch:02d}-{val_loss:.2f}.hdf5, then the model checkpoints will be saved with the epoch number and the validation loss in the filename.
+2) monitor
+ - quantity to monitor.
+3) verbose
+ - verbosity mode, 0 or 1.
+4) save_best_only
+ - if save_best_only=True, the latest best model according to the quantity monitored will not be overwritten. If filepath doesn't contain formatting options like {epoch} then filepath will be overwritten by each new better model.
+5) mode
+ - one of {auto, min, max}. If save_best_only=True, the decision to overwrite the current save file is made based on either the maximization or the minimization of the monitored quantity. For val_acc, this should be max, for val_loss this should be min, etc. In auto mode, the direction is automatically inferred from the name of the monitored quantity.
+6) save_weights_only
+ - if True, then only the model's weights will be saved (model.save_weights(filepath)), else the full model is saved (model.save(filepath)).
+7) save_freq
+ - 'epoch' or integer. When using 'epoch', the callback saves the model after each epoch. When using integer, the callback saves the model at end of this many batches. If the Model is compiled with experimental_steps_per_execution=N, then the saving criteria will be checked every Nth batch. Note that if the saving isn't aligned to epochs, the monitored metric may potentially be less reliable (it could reflect as little as 1 batch, since the metrics get reset every epoch). Defaults to 'epoch'.
+8) options
+-  Optional tf.train.CheckpointOptions object if save_weights_only is true or optional tf.saved_model.SavedOptions object if save_weights_only is false.
+9) **kwargs
+ - Additional arguments for backwards compatibility. Possible key is period.
+ 
+ <예시>
+ EPOCHS = 10
+checkpoint_filepath = '/tmp/checkpoint'
+model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath=checkpoint_filepath,
+    save_weights_only=True,
+    monitor='val_acc',
+    mode='max',
+    save_best_only=True)
+
+# Model weights are saved at the end of every epoch, if it's the best seen
+# so far.
+model.fit(epochs=EPOCHS, callbacks=[model_checkpoint_callback])
+
+# The model weights (that are considered the best) are loaded into the model.
+model.load_weights(checkpoint_filepath)
+
+
+
+ * EarlyStopping : model의 성능 지표가 설정한 epoch동안 개선되지 않을 때 조기 종료할 수 있습니다. EarlyStopping과 이전에 언급한 ModelCheckpoint 콜백의 조합을 통하여, 개선되지 않는 학습에 대한 조기 종료를 실행하고, ModelCheckpoint로 부터 가장 best model을 다시 로드하여 학습을 재게할 수 있습니다.
+ - https://teddylee777.github.io/tensorflow/keras-%EC%BD%9C%EB%B0%B1%ED%95%A8%EC%88%98-vol-03
+ 
+ <예시>
+ filename = 'checkpoint-epoch-{}-batch-{}-trial-001.h5'.format(EPOCH, BATCH_SIZE)
+checkpoint = ModelCheckpoint(filename,             # file명을 지정합니다
+                             monitor='val_loss',   # val_loss 값이 개선되었을때 호출됩니다
+                             verbose=1,            # 로그를 출력합니다
+                             save_best_only=True,  # 가장 best 값만 저장합니다
+                             mode='auto'           # auto는 알아서 best를 찾습니다. min/max
+                            )
+
+earlystopping = EarlyStopping(monitor='val_loss',  # 모니터 기준 설정 (val loss) 
+                              patience=10,         # 10회 Epoch동안 개선되지 않는다면 종료
+                             )
+ 
+* hyperparameter
+1) monitor
+ - Quantity to be monitored.
+2) min_delta
+ - Minimum change in the monitored quantity to qualify as an improvement, i.e. an absolute change of less than min_delta, will count as no improvement.
+3) patience
+ - Number of epochs with no improvement after which training will be stopped.
+4) verbose
+ - verbosity mode.
+5) mode
+ - One of {"auto", "min", "max"}. In min mode, training will stop when the quantity monitored has stopped decreasing; in "max" mode it will stop when the quantity monitored has stopped increasing; in "auto" mode, the direction is automatically inferred from the name of the monitored quantity.
+6) baseline
+ - Baseline value for the monitored quantity. Training will stop if the model doesn't show improvement over the baseline.
+7) restore_best_weights
+ - Whether to restore model weights from the epoch with the best value of the monitored quantity. If False, the model weights obtained at the last step of training are used.
+ 
+ 
+ 
