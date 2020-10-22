@@ -1,0 +1,18 @@
+
+Self-Normalizing Neural Networks 정리
+
+https://pod3275.github.io/paper/2019/03/27/SELU.html
+
+
+[SNN개요]
+Hidden layer의 수가 많은 deep한 neural network를 학습시키기 위해서는 normalization 기법이 필수적이다. 
+하지만 저자들은 normalization technique을 적용한 학습은 불안정하다고 말한다. 
+특히 RNN과 CNN의 경우에는 weight를 공유하는 특성을 가지고 있는 반면, 
+FNN은 perturbation (섭동) 에 민감하기 때문에 training error의 variance가 크게 나타나게 된다. 
+저자들은 deep한 FNN의 성공을 하지 못하는 가장 큰 요인은 결국 이 “sensitivity to perturbations” 라고 주장한다.
+
+저자들은 이 perturbation에 robust한 FNN 모델을 제시한다. 
+Self-normalizing neural networks (이하 SNN) 은 normalization 기법을 적용한 FNN 모델에 비해 training error의 variance가 낮으며, 
+neuron의 activation을 zero mean과 unit variance로 normalize한다. 
+SNN은 변형된 activation function인 Scaled exponential linear units, 즉 SELU를 통해 이러한 기능을 수행합니다.
+
