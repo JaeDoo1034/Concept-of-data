@@ -1,0 +1,15 @@
+# [개념 정리] Batch Normalization in Deep Learning - part 1,2
+
+출처: https://cvml.tistory.com/5 [Computer Vision :)]
+ - Internal Covariate Shift 현상 : 
+Internal Covariate Shift(ICS)는 
+신경망의 각 레이어의 활성화 함수 층에 입력으로 들어가는 데이터의 분포(distribution)가 레이어마다 달라지는 현상으로, 
+특정 한 쪽으로 쏠리는 분포를 갖는 데이터가 존재하게되면 가중치 학습에 영향을 받게 되고 
+이는 역전파(backpropagation)학습 과정에 따라 연쇄적으로 상위 레이어의 가중치 학습에 영향을 주게된다.
+
+
+# Weight Standardization에 대한 정리
+
+ 출저 : https://blog.lunit.io/2019/05/28/weight-standardization/
+ 
+ 
