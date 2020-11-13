@@ -10,3 +10,6 @@
  
 <b> 모델(Model with ML, DL etc..)</b>
  - 머신러닝, 딥러닝 등 모델에 대한 내용을 모아놓았습니다.
+
+** 최신 논문 자료 모음
+https://paperswithcode.com/method/weight-normalization
