@@ -12,4 +12,9 @@ Internal Covariate Shift(ICS)는
 
  출저 : https://blog.lunit.io/2019/05/28/weight-standardization/
  
+Q) weight(filter,parameter), feature activation 에 대한 이해
+
+y=ReLU(ax + b)에서 a,b가 weight(filter, parameter)이고, y가 feature activation이에요.
+ --> 키워드는. CNN공부를 계속 하다보면 감이 올거같아요.
+ - by 헌진DDavid in 케글코리아 오픈채팅
  
