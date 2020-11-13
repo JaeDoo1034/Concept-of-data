@@ -1,0 +1,27 @@
+* 출저 : https://bluese05.tistory.com/m/65
+
+* 설명 :
+- ast모듈 내에 있다. (AST 모듈은 Syntax 를 구조화하는 모듈)
+
+- literal_eval은 python 의 기본 자료형 정도만 evaluate 가 가능하도록 지원한다. 
+  eval 과 비교해 훨씬 엄격하기 때문에 결과적으로 안전을 보장한다고 설명한 것이다. 
+  결과적으로 eval 대비 안전하겠지만,  그 사용 용도가 eval 대비 훨씬 제한적일 수 밖에 없다는 것을 기억해 두자.
+
+예시)
+import ast
+
+str_dict = "{'a': 3, 'b': 5}"
+
+print type(str_dict)           # <type 'str'>
+
+
+
+convert_dict = ast.literal_eval(str_dict)
+
+
+
+print type(convert_dict)   # <type 'dict'>
+
+print convert_dict['a']      #  3
+
+print convert_dict['b']      #  5
